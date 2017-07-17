@@ -125,6 +125,13 @@
        do (write-string string out :start start :end crlfsp)
        while crlfsp)))
 
+(defun should-decode-p (string &key (start 0) (end (length string)))
+  (and (> (- end start) 4)
+       (char= (char string start) #\=)
+       (char= (char string (1+ start)) #\?)
+       (char= (char string (decf end)) #\=)
+       (char= (char string (decf end)) #\?)))
+
 (defun decode* (string &key (start 0) end (errorp t))
   "*Arguments and Values:*
 

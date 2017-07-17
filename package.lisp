@@ -9,5 +9,6 @@
 	:cl-base64)
   (:export :should-encode-p
 	   :encode
+	   :should-decode-p
 	   :decode
 	   :decode*))
